@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter, Redirect, Route } from "react-router-dom";
-import LoginPage from "./pages/Login.page";
-import SignupPage from "./pages/Signup.page";
-import Dashboard from "./pages/Dashboard.page";
-import Recordings from "./pages/Recordings.page";
+import AuthPage from "./pages/Auth.page";
+import AppContainerPage from "./pages/AppContainer.page";
+import NotFoundPage from "./pages/NotFound.page";
 
 function App() {
      return (
@@ -12,17 +11,21 @@ function App() {
                     <Route path="/" exact>
                          <Redirect to="/login"> </Redirect>
                     </Route>
-                    <Route path="/login">
-                         <LoginPage></LoginPage>
+                    <Route path={["/login", "/signup"]} exact>
+                         <AuthPage />
                     </Route>
-                    <Route path="/signup">
-                         <SignupPage></SignupPage>
+                    <Route
+                         path={[
+                              "/dashboard",
+                              "/recordings",
+                              "/batch/:batchNumber/lecture/:lectureNumber",
+                         ]}
+                         exact
+                    >
+                         <AppContainerPage />
                     </Route>
-                    <Route path="/dashboard">
-                         <Dashboard></Dashboard>
-                    </Route>
-                    <Route path="/recordings">
-                         <Recordings></Recordings>
+                    <Route>
+                         <NotFoundPage />
                     </Route>
                </switch>
           </BrowserRouter>
