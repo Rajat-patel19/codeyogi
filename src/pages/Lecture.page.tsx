@@ -1,10 +1,17 @@
+/** @format */
+
 import { FC, memo } from "react";
 import { useParams } from "react-router-dom";
 
 interface Props {}
 
-const Lecture: FC<Props> = (props) => {
-     const { lectureNumber, batchNumber } = useParams<any>();
+interface RouteParams {
+     lectureNumber: string;
+     batchNumber: string;
+}
+
+const Lecture: FC< Props> = (props) => {
+     const { lectureNumber, batchNumber } = useParams<RouteParams>();
 
      return (
           <div>

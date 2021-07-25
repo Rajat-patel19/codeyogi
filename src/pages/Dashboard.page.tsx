@@ -8,7 +8,7 @@ const Dashboard: FC<Props> = (props) => {
           <div>
                This is Dashboard page.
                <Link to="/recordings">
-                    <span className="text-blue-500">Go to Recordings.</span>
+                    <span className="text-blue-500 ">Go to Recordings.</span>
                </Link>
           </div>
      );

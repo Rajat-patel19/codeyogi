@@ -1,3 +1,5 @@
+/** @format */
+
 import { FC, memo } from "react";
 import { Route } from "react-router-dom";
 import AuthHero from "../components/AuthHero";
@@ -8,8 +10,8 @@ interface Props {}
 
 const Auth: FC<Props> = (props) => {
      return (
-          <div className="flex flex-row justify-between">
-               <switch>
+          <div className="flex justify-between">
+               <switch className="w-1/2">
                     <Route path="/login">
                          <LoginPage />
                     </Route>

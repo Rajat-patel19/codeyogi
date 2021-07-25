@@ -24,7 +24,7 @@ function App() {
                     >
                          <AppContainerPage />
                     </Route>
-                    <Route>
+                    <Route path="/not-found">
                          <NotFoundPage />
                     </Route>
                </switch>
