@@ -1,4 +1,5 @@
-import React from "react";
+/** @format */
+
 import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import AuthPage from "./pages/Auth.page";
 import AppContainerPage from "./pages/AppContainer.page";
@@ -20,8 +21,7 @@ function App() {
                               "/recordings",
                               "/batch/:batchNumber/lecture/:lectureNumber",
                          ]}
-                         exact
-                    >
+                         exact>
                          <AppContainerPage />
                     </Route>
                     <Route path="/not-found">

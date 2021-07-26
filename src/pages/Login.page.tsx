@@ -1,30 +1,39 @@
 /** @format */
 
 import { useFormik } from "formik";
-import { FC, memo } from "react";
+import { FC, memo, useState } from "react";
 import * as yup from "yup";
 import { Link, useHistory } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import AuthFooter from "../components/AuthFooter";
 import ForgetPass from "../components/ForgetPass";
-import KeepLog from "../components/KeepLog";
-import LoginButton from "../components/LoginButton";
 import Slider from "../components/Slider";
-import Input from "../components/Input";
+import Input from "../components/Input/Input";
 import { FiLock, FiUser } from "react-icons/fi";
+import Button from "../components/Button/Button";
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
+     const [showPassword, setShowPassword] = useState(false);
+
      const history = useHistory();
 
-     const { handleSubmit, getFieldProps, touched, errors, isSubmitting } =
-          useFormik({
-               initialValues: {
-                    email: "",
-                    password: "",
-               },
-               validationSchema: yup.object().shape({
+     const {
+          handleSubmit,
+          getFieldProps,
+          touched,
+          errors,
+          isSubmitting,
+     } = useFormik({
+          initialValues: {
+               email: "",
+               password: "",
+          },
+          validationSchema: yup
+               .object()
+               .required()
+               .shape({
                     email: yup
                          .string()
                          .required("This field is required!!!!!")
@@ -34,42 +43,41 @@ const Login: FC<Props> = (props) => {
                          .required()
                          .min(8, ({ min }) => `Atleast ${min} chars!!!!`),
                }),
-               onSubmit: (data) => {
-                    console.log("form submitting", data);
-                    setTimeout(() => {
-                         console.log("form submitted successfully");
-                         history.push("/dashboard");
-                    }, 5000);
-               },
-          });
+          onSubmit: (data) => {
+               console.log("form submitting", data);
+               setTimeout(() => {
+                    console.log("form submitted successfully");
+                    history.push("/dashboard");
+               }, 5000);
+          },
+     });
      return (
           <div className="min-h-screen flex items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
                <div className="max-w-md w-full space-y-8">
                     <div className="text-left mb-16">
-                         <h2 className="mt-6 text-5xl font-medium text-gray-900 pb-2">
+                         <h2 className="text-40 font-medium text-greyish mb-1">
                               Log In to
-                              <span className="text-blueish text-5xl font-semibold">
+                              <span className="text-blueish text-40 font-semibold">
                                    {" "}
                                    CODEYOGI
                               </span>
                          </h2>
-                         <p className="mt-2 text-sm text-gray-600">
+                         <p className="text-sm text-greyish font-extrabold">
                               New Here?{" "}
                               <Link
                                    to="/signup"
-                                   className="font-medium text-blueish hover:cursor-pointer pb-px border-blueish border-solid border-b">
+                                   className="font-extrabold text-sm text-blueish hover:cursor-pointer pb-px border-blueish border-solid border-b">
                                    Create an account
                               </Link>
                          </p>
                     </div>
-
-                    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                    <form className="mt-8 space-y-3" onSubmit={handleSubmit}>
                          <input
                               type="hidden"
                               name="remember"
                               defaultValue="true"
                          />
-                         <div className="space-y-3 outline-none bg-white pb-4">
+                         <div className="space-y-6 outline-none bg-white pb-4">
                               <Input
                                    id="email"
                                    type="email"
@@ -78,24 +86,20 @@ const Login: FC<Props> = (props) => {
                                    touched={touched.email}
                                    error={errors.email}
                                    {...getFieldProps("email")}
-                                   placeholder="Email address">
+                                   placeholder="Email address"
+                                   className="">
                                    <FiUser
                                         className="h-8 w-8 text-indigo-500 group-hover:text-indigo-400 absolute left-0 top-0 px-1 py-px"
                                         aria-hidden="true"
                                    />
                               </Input>
-                              {touched.email && (
-                                   <div className="text-red-500">
-                                        {errors.email}
-                                   </div>
-                              )}
                               <Input
                                    id="password"
-                                   type="password"
+                                   type={showPassword ? "text" : "password"}
                                    autoComplete="password"
                                    required
-                                   touched={touched.email}
-                                   error={errors.email}
+                                   touched={touched.password}
+                                   error={errors.password}
                                    {...getFieldProps("password")}
                                    placeholder="Password">
                                    <FiLock
@@ -103,11 +107,6 @@ const Login: FC<Props> = (props) => {
                                         aria-hidden="true"
                                    />
                               </Input>
-                              {touched.password && (
-                                   <div className="text-red-500">
-                                        {errors.password}
-                                   </div>
-                              )}
                          </div>
 
                          <div className="flex items-center justify-between pb-8">
@@ -115,14 +114,30 @@ const Login: FC<Props> = (props) => {
                                    <p className="text-sm text-gray-500">
                                         Show Password
                                    </p>
-                                   <Slider />
+                                   <Slider
+                                        showPassword={showPassword}
+                                        setShowPassword={setShowPassword}
+                                   />
                               </div>
-                              <LoginButton />
+                              <Button theme="primary">Log in</Button>
+
                               {isSubmitting && (
                                    <FaSpinner className="mt-5 animate-spin"></FaSpinner>
                               )}
                          </div>
-                         <KeepLog />
+                         <div className="flex items-center place-content-center">
+                              <input
+                                   id="Keep me logged in"
+                                   name="Keep me logged in"
+                                   type="checkbox"
+                                   className="h-5 w-5 border"
+                              />
+                              <label
+                                   htmlFor="Keep me logged in"
+                                   className="ml-2 block text-base text-silver">
+                                   Keep me logged in
+                              </label>
+                         </div>
                          <ForgetPass />
                          <AuthFooter />
                     </form>

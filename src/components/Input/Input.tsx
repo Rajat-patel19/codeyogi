@@ -1,6 +1,6 @@
 /** @format */
 
-import { Children, FC, InputHTMLAttributes, memo } from "react";
+import { FC, InputHTMLAttributes, memo } from "react";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
      touched?: boolean;
@@ -33,10 +33,14 @@ const Input: FC<Props> = ({
                     }
                     placeholder={placeholder}
                />
+               {touched && <div className="text-red-500 absolute">{error}</div>}
           </div>
      );
 };
 
-Input.defaultProps = {};
+Input.defaultProps = {
+     touched: false,
+     error: "",
+};
 
 export default memo(Input);
