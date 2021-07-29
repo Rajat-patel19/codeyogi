@@ -3,7 +3,6 @@
 import { ButtonHTMLAttributes, FC, memo } from "react";
 import { IconType } from "react-icons";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
-import { isPropertySignature } from "typescript";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
      children?: string;
@@ -418,7 +417,7 @@ const Alert: FC<Props> = ({
                               </svg>
                          </button>{" "}
                     </div>
-                    {ArrowIcon && arrowIconPosition != undefined && (
+                    {ArrowIcon && arrowIconPosition !== undefined && (
                          <div
                               className={
                                    "absolute bottom-0 top-0 flex items-center justify-center w-16 " +

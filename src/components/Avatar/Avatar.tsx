@@ -1,6 +1,6 @@
 /** @format */
 
-import { AllHTMLAttributes, FC, HTMLAttributes, memo } from "react";
+import { FC, memo } from "react";
 
 export interface Props {
      online?: true | false | undefined;
@@ -39,7 +39,7 @@ const Avatar: FC<Props> = ({ online, rounded, thumbnail, animate }) => {
                          " " +
                          animating
                     }>
-                    {thumbnail != "image" && (
+                    {thumbnail !== "image" && (
                          <span
                               className={
                                    "absolute inset-0 bg-silver text-center place-content-center text-white flex items-center " +
@@ -63,7 +63,7 @@ const Avatar: FC<Props> = ({ online, rounded, thumbnail, animate }) => {
                          " " +
                          animating
                     }>
-                    {thumbnail != "image" && (
+                    {thumbnail !== "image" && (
                          <span
                               className={
                                    "absolute inset-0 bg-silver text-center place-content-center text-white flex items-center " +
@@ -87,7 +87,7 @@ const Avatar: FC<Props> = ({ online, rounded, thumbnail, animate }) => {
                          " " +
                          animating
                     }>
-                    {thumbnail != "image" && (
+                    {thumbnail !== "image" && (
                          <span
                               className={
                                    "absolute inset-0 bg-silver text-center place-content-center text-white flex items-center " +
@@ -112,7 +112,7 @@ const Avatar: FC<Props> = ({ online, rounded, thumbnail, animate }) => {
                          " " +
                          animating
                     }>
-                    {thumbnail != "image" && (
+                    {thumbnail !== "image" && (
                          <span
                               className={
                                    "absolute inset-0 bg-silver text-center place-content-center text-white flex items-center " +
