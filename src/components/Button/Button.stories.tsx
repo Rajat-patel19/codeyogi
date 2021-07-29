@@ -12,21 +12,13 @@ export default {
      component: Button,
      argTypes: {
           theme: {
-               control: { type: "select" },
+               control: { type: "inline-radio" },
           },
           Icon: {
                options: Object.keys(allIcons),
                mapping: allIcons,
                control: {
                     type: "select",
-               },
-          },
-          counter: {
-               control: {
-                    type: "range",
-                    min: 0,
-                    max: 50,
-                    step: 5,
                },
           },
           onClick: { action: "clicked" },

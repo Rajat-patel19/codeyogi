@@ -5,36 +5,48 @@ import { FC, memo } from "react";
 import { IconType } from "react-icons";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-     theme?: "primary" | "secondary";
+     theme?: "primary" | "warning" | "dark";
+     buttonType?: "solid" | "outline";
      children: string;
      Icon?: IconType;
-     counter?: number;
 }
 
 const Button: FC<Props> = ({
      children,
      className,
+     buttonType,
      theme,
-     counter,
      Icon,
      ...rest
 }) => {
-     const themeClasses =
+     const themeClassesOutline =
           theme === "primary"
-               ? "bg-blueish"
-               : "bg-gray-600 hover:bg-gray-700 focus:ring-gray-500";
+               ? "border-blueish text-blueish hover:text-white hover:bg-blueish"
+               : theme === "dark"
+               ? "border-greyish text-greyish hover:text-white hover:bg-greyish"
+               : "border-warning text-warning hover:text-white hover:bg-warning";
+
+     const themeClassesSolid =
+          theme === "primary"
+               ? "bg-blueish shadow-2xl hover:shadow-none text-white"
+               : theme === "dark"
+               ? "bg-greyish shadow-2xl hover:shadow-none text-white"
+               : "bg-warning shadow-2xl hover:shadow-none text-white";
 
      const iconThemeClasses =
           theme === "primary"
                ? "text-indigo-600  group-hover:text-indigo-400"
                : "text-gray-800  group-hover:text-gray-400";
 
+     const type =
+          buttonType === "solid" ? themeClassesSolid : themeClassesOutline;
+
      return (
           <button
                {...rest}
                className={
-                    "group relative flex justify-center py-2 px-5 border border-transparent text-sm font-medium rounded-md shadow-xl hover:shadow-none text-white focus:outline-none focus:ring-2 focus:ring-offset-2 " +
-                    themeClasses +
+                    "group relative flex justify-center py-2 px-5 border text-sm font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 " +
+                    type +
                     " " +
                     className
                }>
@@ -47,17 +59,13 @@ const Button: FC<Props> = ({
                     </span>
                )}
                {children}
-               {counter && (
-                    <span className="bg-red-500 rounded-full w-8 ">
-                         {counter}
-                    </span>
-               )}
           </button>
      );
 };
 
 Button.defaultProps = {
      theme: "primary",
+     buttonType: "solid",
 };
 
 export default memo(Button);

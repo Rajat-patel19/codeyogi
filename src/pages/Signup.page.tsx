@@ -143,7 +143,7 @@ const Signup: FC<Props> = (props) => {
                                    </Link>
                               </label>
                          </div>
-                         <div className="flex items-center justify-between pb-8">
+                         <div className="flex items-center  justify-between pb-8">
                               <div className="flex space-x-3 items-center">
                                    <p className="text-sm text-gray-500">
                                         Show Password
@@ -154,9 +154,8 @@ const Signup: FC<Props> = (props) => {
                                    />
                               </div>
                               <Button theme="primary">Get Started!</Button>
-
                               {isSubmitting && (
-                                   <FaSpinner className="mt-5 animate-spin"></FaSpinner>
+                                   <FaSpinner className="animate-spin"></FaSpinner>
                               )}
                          </div>
                          <AuthFooter />

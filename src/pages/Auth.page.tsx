@@ -10,7 +10,7 @@ interface Props {}
 
 const Auth: FC<Props> = (props) => {
      return (
-          <div className="flex justify-between">
+          <div className="flex lg:justify-between justify-center">
                <switch className="w-1/2">
                     <Route path="/login">
                          <LoginPage />

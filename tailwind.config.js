@@ -14,6 +14,17 @@ module.exports = {
                     silver: "#888EA8",
                     greyish: "#3B3F5C",
                     blueish: "#4361EE",
+                    bgPrimary: "#eaf1ff",
+                    warning: "#e2a03f",
+                    bgWarning: "#fff9ed",
+                    success: "#1abc9c",
+                    bgSuccess: "#ddf5f0",
+                    info: "#2196f3",
+                    bgInfo: "#e7f7ff",
+                    errorBlack: "#3b3f5c",
+                    bgErrorBlack: "#e3e4eb",
+                    errorRed: "#e7515a",
+                    bgErrorRed: "#fff5f5",
                     cyan: colors.cyan,
                },
                fontSize: {
@@ -27,9 +38,17 @@ module.exports = {
                },
                backgroundImage: (theme) => ({
                     "hero-auth": "url('/src/images/Hero.png')",
+                    profile: "url('/src/images/profile.jpeg')",
                }),
                backgroundSize: {
                     75: "75%",
+               },
+               borderRadius: {
+                    50: "50%",
+               },
+               inset: {
+                    one: "1%",
+                    five: "5%",
                },
           },
      },
