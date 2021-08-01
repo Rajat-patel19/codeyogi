@@ -1,5 +1,6 @@
 /** @format */
 
+import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { User } from "../models/User";
 import { BASE_URL, LS_AUTH_TOKEN } from "./base";
@@ -30,4 +31,13 @@ export const login = (data: LoginRequest) => {
 
 export const logout = () => {
      localStorage.removeItem(LS_AUTH_TOKEN);
+};
+
+interface MeResponse {
+     data: User;
+}
+
+export const me = () => {
+     const url = BASE_URL + "/me";
+     return axios.get<MeResponse>(url).then((response) => response.data.data);
 };

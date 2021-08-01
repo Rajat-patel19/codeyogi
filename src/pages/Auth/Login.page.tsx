@@ -12,8 +12,11 @@ import Input from "../../components/Input/Input";
 import { FiLock, FiUser } from "react-icons/fi";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
+import { User } from "../../models/User";
 
-interface Props {}
+interface Props {
+     onLogin: (user: User) => void;
+}
 
 const Login: FC<Props> = (props) => {
      const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +48,8 @@ const Login: FC<Props> = (props) => {
                          .min(8, ({ min }) => `Atleast ${min} chars!!!!`),
                }),
           onSubmit: (data) => {
-               login(data).then(() => {
+               login(data).then((u) => {
+                    props.onLogin(u);
                     history.push("/dashboard");
                });
           },
