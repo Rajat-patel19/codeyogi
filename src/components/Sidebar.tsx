@@ -2,7 +2,7 @@
 
 import { HTMLAttributes } from "react";
 import { FC, memo } from "react";
-import { logout } from "../api";
+import { logout } from "../api/auth";
 import Button from "./Button/Button";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

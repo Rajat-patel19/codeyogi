@@ -5,14 +5,14 @@ import { FC, ImgHTMLAttributes, memo } from "react";
 interface Props extends ImgHTMLAttributes<HTMLImageElement> {
      title: string;
      content?: string;
-     src: string;
+     source: string | null;
 }
 
-const Card: FC<Props> = ({ title, content, src }) => {
+const Card: FC<Props> = ({ title, content, source }) => {
      return (
           <div className="flex justify-around px-4 py-4 items-center bg-transparent mx-3 mt-3 text-white">
                <img
-                    src={"" + src}
+                    src={"" + source}
                     alt="img"
                     className="h-20 w-20 rounded-full object-cover object-center"
                />

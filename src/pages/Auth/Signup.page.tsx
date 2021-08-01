@@ -3,14 +3,14 @@
 import { useFormik } from "formik";
 import { FC, memo, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Input from "../components/Input/Input";
+import Input from "../../components/Input/Input";
 import * as yup from "yup";
 import { FiLock, FiUser } from "react-icons/fi";
 import { HiAtSymbol } from "react-icons/hi";
-import Button from "../components/Button/Button";
-import Slider from "../components/Slider";
+import Button from "../../components/Button/Button";
+import Slider from "../../components/Slider";
 import { FaSpinner } from "react-icons/fa";
-import AuthFooter from "../components/AuthFooter";
+import AuthFooter from "../../components/AuthFooter";
 
 interface Props {}
 

@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import { fetchGroups, GroupResponse } from "../api";
-import Card from "../components/Card";
+import { fetchGroups, GroupResponse } from "../../api/groups";
+import Card from "../../components/Card";
 
 interface Props {}
 const Dashboard: FC<Props> = (props) => {
@@ -51,7 +51,7 @@ const Dashboard: FC<Props> = (props) => {
                                              : "bg-gray-500")
                                    }>
                                    <Card
-                                        src={value.group_image_url}
+                                        source={value.group_image_url}
                                         title={value.name}
                                         content={value.description}></Card>
                               </div>

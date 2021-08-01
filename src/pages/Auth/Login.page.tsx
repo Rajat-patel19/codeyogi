@@ -5,13 +5,13 @@ import { FC, memo, useState } from "react";
 import * as yup from "yup";
 import { Link, useHistory } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
-import AuthFooter from "../components/AuthFooter";
-import ForgetPass from "../components/ForgetPass";
-import Slider from "../components/Slider";
-import Input from "../components/Input/Input";
+import AuthFooter from "../../components/AuthFooter";
+import ForgetPass from "../../components/ForgetPass";
+import Slider from "../../components/Slider";
+import Input from "../../components/Input/Input";
 import { FiLock, FiUser } from "react-icons/fi";
-import Button from "../components/Button/Button";
-import { login } from "../api";
+import Button from "../../components/Button/Button";
+import { login } from "../../api/auth";
 
 interface Props {}
 

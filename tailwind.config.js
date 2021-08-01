@@ -38,7 +38,6 @@ module.exports = {
                },
                backgroundImage: (theme) => ({
                     "hero-auth": "url('/src/images/Hero.png')",
-                    profile: "url('/src/images/profile.jpeg')",
                }),
                backgroundSize: {
                     75: "75%",
