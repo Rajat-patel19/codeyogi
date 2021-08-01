@@ -1,16 +1,22 @@
 /** @format */
 
-import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import AuthPage from "./pages/Auth.page";
 import AppContainerPage from "./pages/AppContainer.page";
 import NotFoundPage from "./pages/NotFound.page";
+import { LS_LOGIN_TOKEN } from "./api";
 
 function App() {
+     const token = localStorage.getItem(LS_LOGIN_TOKEN);
      return (
           <BrowserRouter>
-               <switch>
+               <Switch>
                     <Route path="/" exact>
-                         <Redirect to="/login"> </Redirect>
+                         {token ? (
+                              <Redirect to="/dashboard" />
+                         ) : (
+                              <Redirect to="/login" />
+                         )}
                     </Route>
                     <Route path={["/login", "/signup"]} exact>
                          <AuthPage />
@@ -27,7 +33,7 @@ function App() {
                     <Route path="/not-found">
                          <NotFoundPage />
                     </Route>
-               </switch>
+               </Switch>
           </BrowserRouter>
      );
 }

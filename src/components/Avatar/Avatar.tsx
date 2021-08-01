@@ -1,8 +1,6 @@
 /** @format */
 
 import { FC, memo } from "react";
-import { Url } from "url";
-
 export interface Props {
      online?: true | false | undefined;
      rounded?: "circle" | "rounded-rectangle";

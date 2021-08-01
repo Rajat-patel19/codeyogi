@@ -11,6 +11,7 @@ import Slider from "../components/Slider";
 import Input from "../components/Input/Input";
 import { FiLock, FiUser } from "react-icons/fi";
 import Button from "../components/Button/Button";
+import { login } from "../api";
 
 interface Props {}
 
@@ -44,11 +45,9 @@ const Login: FC<Props> = (props) => {
                          .min(8, ({ min }) => `Atleast ${min} chars!!!!`),
                }),
           onSubmit: (data) => {
-               console.log("form submitting", data);
-               setTimeout(() => {
-                    console.log("form submitted successfully");
+               login(data).then(() => {
                     history.push("/dashboard");
-               }, 5000);
+               });
           },
      });
      return (
@@ -113,7 +112,6 @@ const Login: FC<Props> = (props) => {
                                         />
                                    </Input>
                               </div>
-
                               <div className="flex items-center justify-between pb-8">
                                    <div className="flex space-x-3 items-center">
                                         <p className="text-sm text-gray-500">
@@ -124,7 +122,9 @@ const Login: FC<Props> = (props) => {
                                              setShowPassword={setShowPassword}
                                         />
                                    </div>
-                                   <Button theme="primary">Log in</Button>
+                                   <Button theme="primary" type="submit">
+                                        Log in
+                                   </Button>
 
                                    {isSubmitting && (
                                         <FaSpinner className="mt-5 animate-spin"></FaSpinner>

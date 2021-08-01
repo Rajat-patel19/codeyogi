@@ -1,5 +1,7 @@
+/** @format */
+
 import { FC, memo } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Dashboard from "./Dashboard.page";
 import LecturePage from "./Lecture.page";
@@ -9,9 +11,11 @@ interface Props {}
 
 const AppContainer: FC<Props> = (props) => {
      return (
-          <div className="flex flex-row">
-               <Sidebar />
-               <switch>
+          <div className="flex">
+               <div className="w-80">
+                    <Sidebar />
+               </div>
+               <Switch>
                     <Route path="/dashboard">
                          <Dashboard />
                     </Route>
@@ -21,7 +25,7 @@ const AppContainer: FC<Props> = (props) => {
                     <Route path="/batch/:batchNumber/lecture/:lectureNumber">
                          <LecturePage />
                     </Route>
-               </switch>
+               </Switch>
           </div>
      );
 };

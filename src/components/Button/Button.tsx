@@ -66,6 +66,7 @@ const Button: FC<Props> = ({
 Button.defaultProps = {
      theme: "primary",
      buttonType: "solid",
+     type: "submit",
 };
 
 export default memo(Button);
