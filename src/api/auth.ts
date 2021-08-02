@@ -1,6 +1,5 @@
 /** @format */
 
-import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { User } from "../models/User";
 import { BASE_URL, LS_AUTH_TOKEN } from "./base";
@@ -23,7 +22,6 @@ export const login = (data: LoginRequest) => {
      console.log(data);
 
      return axios.post<LoginResponse>(url, data).then((response) => {
-          console.log(response.data.token);
           localStorage.setItem(LS_AUTH_TOKEN, response.data.token);
           return response.data.user;
      });

@@ -23,7 +23,7 @@ const Dashboard: FC<Props> = (props) => {
           });
      }, [query]);
      return (
-          <div className="flex flex-col items-center w-full h-full">
+          <div className="flex flex-col items-center w-full bg-gray-500 h-full">
                <input
                     id="search"
                     type="search"

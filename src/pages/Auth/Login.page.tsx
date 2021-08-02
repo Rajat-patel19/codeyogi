@@ -12,16 +12,17 @@ import Input from "../../components/Input/Input";
 import { FiLock, FiUser } from "react-icons/fi";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
-import { User } from "../../models/User";
+import { useContext } from "react";
+import AppContext from "../../App.context";
 
-interface Props {
-     onLogin: (user: User) => void;
-}
+interface Props {}
 
 const Login: FC<Props> = (props) => {
      const [showPassword, setShowPassword] = useState(false);
 
      const history = useHistory();
+
+     const { setUser } = useContext(AppContext);
 
      const {
           handleSubmit,
@@ -49,7 +50,7 @@ const Login: FC<Props> = (props) => {
                }),
           onSubmit: (data) => {
                login(data).then((u) => {
-                    props.onLogin(u);
+                    setUser(u);
                     history.push("/dashboard");
                });
           },

@@ -3,21 +3,16 @@
 import { FC, memo } from "react";
 import { Route, Switch } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
-import { User } from "../../models/User";
 import Dashboard from "./Dashboard.page";
 import LecturePage from "./Lecture.page";
 import Recordings from "./Recordings.page";
 
-interface Props {
-     user: User;
-}
+interface Props {}
 
-const AppContainer: FC<Props> = ({ user }) => {
+const AppContainer: FC<Props> = () => {
      return (
           <div className="flex">
-               <div className="w-80">
-                    <Sidebar user={user} />
-               </div>
+               <Sidebar />
                <Switch>
                     <Route path="/dashboard">
                          <Dashboard />
