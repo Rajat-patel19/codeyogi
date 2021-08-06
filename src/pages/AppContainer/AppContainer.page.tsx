@@ -5,14 +5,16 @@ import { Route, Switch } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import Dashboard from "./Dashboard.page";
 import LecturePage from "./Lecture.page";
-import Recordings from "./Recordings.page";
+import Recordings from "../Recordings.page";
 
 interface Props {}
 
 const AppContainer: FC<Props> = () => {
      return (
           <div className="flex">
-               <Sidebar />
+               <div>
+                    <Sidebar />
+               </div>
                <Switch>
                     <Route path="/dashboard">
                          <Dashboard />

@@ -21,7 +21,6 @@ export const fetchGroups = (data: GroupRequest) => {
      return axios
           .get<GroupResponse>(url, { params: data })
           .then((response) => {
-               return response.data;
-          })
-          .catch((e) => console.log(e));
+               return response.data.data;
+          });
 };

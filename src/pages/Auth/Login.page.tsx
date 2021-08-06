@@ -12,8 +12,7 @@ import Input from "../../components/Input/Input";
 import { FiLock, FiUser } from "react-icons/fi";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
-import { useContext } from "react";
-import AppContext from "../../App.context";
+import { useDispatch } from "react-redux";
 
 interface Props {}
 
@@ -22,7 +21,7 @@ const Login: FC<Props> = (props) => {
 
      const history = useHistory();
 
-     const { setUser } = useContext(AppContext);
+     const dispatch = useDispatch();
 
      const {
           handleSubmit,
@@ -50,7 +49,7 @@ const Login: FC<Props> = (props) => {
                }),
           onSubmit: (data) => {
                login(data).then((u) => {
-                    setUser(u);
+                    dispatch({ type: "me/login", payload: u });
                     history.push("/dashboard");
                });
           },

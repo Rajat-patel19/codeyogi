@@ -1,62 +1,71 @@
 /** @format */
 
 import { useEffect } from "react";
-import { useState } from "react";
 import { FC, memo } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchGroups, GroupResponse } from "../../api/groups";
+import { fetchGroups } from "../../api/groups";
 import Card from "../../components/Card";
+import { useAppSelector } from "../../store";
 
 interface Props {}
 const Dashboard: FC<Props> = (props) => {
-     const [group, setGroup] = useState<GroupResponse | void>();
-     const [query, setQuery] = useState("");
+     const query = useAppSelector((state) => state.groupQuery);
 
-     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-          const inp = event.target.value;
-          setQuery(inp);
-     };
+     const groups = useAppSelector((state) => {
+          const groupIds = state.groupQueryMap[state.groupQuery] || [];
+          const groups = groupIds.map((id) => state.groups[id]);
+          return groups;
+     });
+
+     const dispatch = useDispatch();
 
      useEffect(() => {
-          fetchGroups({ status: "all-groups", query }).then((data) => {
-               setGroup(data);
+          fetchGroups({ status: "all-groups", query }).then((groups) => {
+               dispatch({
+                    type: "groups/query_completed",
+                    payload: { groups: groups, query },
+               });
           });
-     }, [query]);
+     }, [query]); //eslint-disable-line react-hooks/exhaustive-deps
+
      return (
-          <div className="flex flex-col items-center w-full bg-gray-500 h-full">
+          <div className="flex flex-col items-center w-full h-full">
                <input
-                    id="search"
-                    type="search"
+                    type="text"
                     value={query}
-                    onChange={handleChange}
-                    className="border-2 rounded-lg w-40 p-4 border-blueish h-10 my-4"
-                    placeholder="search here..."
-               />
+                    onChange={(e) => {
+                         dispatch({
+                              type: "groups/query",
+                              payload: e.target.value,
+                         });
+                    }}
+                    placeholder="search groups here..."
+                    className="border-2 rounded-lg w-48 p-4 border-blueish h-10 my-4"></input>
                <div className="mb-2">
-                    This is Dashboard page.
+                    This is Dashboard Page.
                     <Link to="/recordings">
-                         <span className="text-blue-500 ">
+                         <span className="text-blue-500">
                               Go to Recordings.
                          </span>
                     </Link>
                </div>
                <div>
-                    {group?.data.map((value, key) => {
-                         return (
-                              <div
-                                   className={
-                                        "rounded-2xl shadow-2xl mb-3 " +
-                                        (key % 2 === 0
-                                             ? "bg-gray-800"
-                                             : "bg-gray-500")
-                                   }>
-                                   <Card
-                                        source={value.group_image_url}
-                                        title={value.name}
-                                        content={value.description}></Card>
-                              </div>
-                         );
-                    })}
+                    {groups.map((group, key) => (
+                         <div
+                              className={
+                                   "rounded-2xl shadow-2xl mb-3 " +
+                                   (key % 2 === 0
+                                        ? "bg-gray-800"
+                                        : "bg-gray-500")
+                              }
+                              key={key}>
+                              <Card
+                                   title={group.name}
+                                   source={group.group_image_url}
+                                   content={group.description}></Card>
+                         </div>
+                    ))}
                </div>
           </div>
      );

@@ -1,16 +1,15 @@
 /** @format */
 
 import { HTMLAttributes } from "react";
-import { useContext } from "react";
 import { FC, memo } from "react";
 import { logout } from "../api/auth";
-import AppContext from "../App.context";
+import {  useAppSelector } from "../store";
 import Button from "./Button/Button";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 const Sidebar: FC<Props> = () => {
-     const { user } = useContext(AppContext);
+     const user = useAppSelector((state) => state.me);
 
      return (
           <div className="w-80">
