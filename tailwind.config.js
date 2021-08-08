@@ -52,7 +52,7 @@ module.exports = {
           },
      },
      variants: {
-          extend: {},
+          extend: { cursor: ["disabled"] },
      },
      plugins: [],
 };

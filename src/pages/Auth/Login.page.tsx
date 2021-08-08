@@ -13,6 +13,7 @@ import { FiLock, FiUser } from "react-icons/fi";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
 import { useDispatch } from "react-redux";
+import { meLoginAction } from "../../actions/auth.actions";
 
 interface Props {}
 
@@ -29,11 +30,13 @@ const Login: FC<Props> = (props) => {
           touched,
           errors,
           isSubmitting,
+          isValid,
      } = useFormik({
           initialValues: {
                email: "",
                password: "",
           },
+          isInitialValid: false,
           validationSchema: yup
                .object()
                .required()
@@ -49,11 +52,14 @@ const Login: FC<Props> = (props) => {
                }),
           onSubmit: (data) => {
                login(data).then((u) => {
-                    dispatch({ type: "me/login", payload: u });
+                    dispatch(meLoginAction(u));
                     history.push("/dashboard");
                });
           },
      });
+
+     console.log("is login form valid", isValid);
+
      return (
           <>
                <div className="min-h-screen flex items-center justify-center py-2 px-10 md:px-5 lg:px-8">
@@ -126,7 +132,10 @@ const Login: FC<Props> = (props) => {
                                              setShowPassword={setShowPassword}
                                         />
                                    </div>
-                                   <Button theme="primary" type="submit">
+                                   <Button
+                                        theme="primary"
+                                        type="submit"
+                                        disabled={!isValid}>
                                         Log in
                                    </Button>
 

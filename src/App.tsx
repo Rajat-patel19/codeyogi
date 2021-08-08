@@ -8,12 +8,15 @@ import AuthLazy from "./pages/Auth/Auth.lazy";
 import { useEffect } from "react";
 import { me } from "./api/auth";
 import { useDispatch } from "react-redux";
-import { meFetchAction, uiSideBarToggle, useAppSelector } from "./store";
 import AppContainerLazy from "./pages/AppContainer/AppContainer.lazy";
+import { meFetchAction } from "./actions/auth.actions";
+import { useAppSelector } from "./store";
 interface Props {}
 
 const App: FC<Props> = () => {
-     const user = useAppSelector((state) => state.me);
+     const user = useAppSelector(
+          (state) => state.auth.id && state.users.byId[state.auth.id]
+     );
 
      const dispatch = useDispatch();
 
@@ -25,14 +28,7 @@ const App: FC<Props> = () => {
           }
 
           me().then((u) => dispatch(meFetchAction(u)));
-     }, []); //eslint-disable-line react-hooks/exhaustive-deps
-
-     useEffect(() => {
-          setTimeout(() => {
-               console.log("uiSideBarToggle dispatched");
-               dispatch(uiSideBarToggle(false));
-          }, 8000);
-     }, []); //eslint-disable-line react-hooks/exhaustive-deps
+     }, []); //eslint-disable-line react-hooks/exhaustive-deps 
 
      if (!user && token) {
           return <div>Loading...</div>;

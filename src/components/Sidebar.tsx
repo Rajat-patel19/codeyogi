@@ -3,20 +3,22 @@
 import { HTMLAttributes } from "react";
 import { FC, memo } from "react";
 import { logout } from "../api/auth";
-import {  useAppSelector } from "../store";
+import { useAppSelector } from "../store";
 import Button from "./Button/Button";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 const Sidebar: FC<Props> = () => {
-     const user = useAppSelector((state) => state.me);
+     const userFirstName = useAppSelector(
+          (state) => state.users.byId[state.auth.id!].first_name
+     );
 
      return (
           <div className="w-80">
                <div className="w-80 bg-gray-400 flex flex-col justify-between min-h-screen max-h-screen fixed ">
                     <div>
                          This is Sidebar.
-                         <div className="text-red-500">{user!.first_name}</div>
+                         <div className="text-red-500">{userFirstName }</div>
                     </div>
                     <Button
                          onClick={() => {

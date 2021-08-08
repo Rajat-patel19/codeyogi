@@ -45,10 +45,8 @@ const Button: FC<Props> = ({
           <button
                {...rest}
                className={
-                    "group relative flex justify-center py-2 px-5 border text-sm font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 " +
-                    type +
-                    " " +
-                    className
+                    "group relative flex justify-center py-2 px-5 border text-sm font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed " +
+                    type
                }>
                {Icon && (
                     <span className="absolute left-0 inset-y-0 flex items-center pl-3">
