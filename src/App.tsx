@@ -53,6 +53,7 @@ const App: FC<Props> = () => {
                                    path={[
                                         "/dashboard",
                                         "/recordings",
+                                        "/profile",
                                         "/batch/:batchNumber/lecture/:lectureNumber",
                                    ]}
                                    exact>

@@ -92,8 +92,8 @@ const Navbar: FC<Props> = (className) => {
                                              <div
                                                   ref={ref}
                                                   className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                                                  <div className="w-fulL text-warning px-3 py-2 rounded-md text-xl font-bold">
-                                                       WELCOME{" "}
+                                                  <div className="w-fulL text-cyan-800 px-3 py-2 rounded-md text-xl font-bold">
+                                                       WELCOME!{" "}
                                                        {user!.first_name}
                                                   </div>
                                                   <Link
