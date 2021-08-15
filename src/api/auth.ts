@@ -39,3 +39,10 @@ export const me = () => {
      const url = BASE_URL + "/me";
      return axios.get<MeResponse>(url).then((response) => response.data.data);
 };
+
+// export const updateMe = () => {
+//      const url = BASE_URL + "/me";
+//      return axios
+//           .patch(url, { first_name: "HAHA" })
+//           .then((response) => response.data.data);
+// };

@@ -1,7 +1,7 @@
 /** @format */
 
 import { Reducer } from "redux";
-import { ME_FETCH, ME_LOGIN } from "../actions/auth.actions";
+import { ME_FETCH, ME_LOGIN } from "../actions/actions.constants";
 
 export interface AuthState {
      id?: number;

@@ -6,19 +6,14 @@ import NotFoundPage from "./pages/NotFound.page";
 import { LS_AUTH_TOKEN } from "./api/base";
 import AuthLazy from "./pages/Auth/Auth.lazy";
 import { useEffect } from "react";
-import { me } from "./api/auth";
-import { useDispatch } from "react-redux";
+import { me } from "./middlewares/auth.middleware";
 import AppContainerLazy from "./pages/AppContainer/AppContainer.lazy";
-import { meFetchAction } from "./actions/auth.actions";
 import { useAppSelector } from "./store";
+import { meSelector } from "./selectors/auth.selectors";
 interface Props {}
 
 const App: FC<Props> = () => {
-     const user = useAppSelector(
-          (state) => state.auth.id && state.users.byId[state.auth.id]
-     );
-
-     const dispatch = useDispatch();
+     const user = useAppSelector(meSelector);
 
      const token = localStorage.getItem(LS_AUTH_TOKEN);
 
@@ -27,8 +22,8 @@ const App: FC<Props> = () => {
                return;
           }
 
-          me().then((u) => dispatch(meFetchAction(u)));
-     }, []); //eslint-disable-line react-hooks/exhaustive-deps 
+          me();
+     }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
      if (!user && token) {
           return <div>Loading...</div>;

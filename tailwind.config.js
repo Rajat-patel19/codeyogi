@@ -26,6 +26,7 @@ module.exports = {
                     errorRed: "#e7515a",
                     bgErrorRed: "#fff5f5",
                     cyan: colors.cyan,
+                    bgDark: "#0e1726",
                },
                fontSize: {
                     40: "2.5rem",

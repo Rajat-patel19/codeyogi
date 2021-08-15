@@ -1,3 +1,5 @@
+/** @format */
+
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 

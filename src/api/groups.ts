@@ -7,7 +7,7 @@ import { BASE_URL } from "./base";
 export interface GroupRequest {
      limit?: number;
      offset?: number;
-     query?: string;
+     query: string;
      status: "all-groups" | "favourite" | "archived";
 }
 
@@ -20,7 +20,5 @@ export const fetchGroups = (data: GroupRequest) => {
 
      return axios
           .get<GroupResponse>(url, { params: data })
-          .then((response) => {
-               return response.data.data;
-          });
+          .then((response) => response.data.data);
 };
