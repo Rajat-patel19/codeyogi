@@ -41,9 +41,9 @@ const Header: FC<Props> = (props) => {
                                              viewBox="0 0 24 24"
                                              fill="none"
                                              stroke="currentColor"
-                                             stroke-width="2"
-                                             stroke-linecap="round"
-                                             stroke-linejoin="round"
+                                             strokeWidth="2"
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round"
                                              className="text-silver m-2 md:m-0 w-5 h-5 md:absolute md:top-2 md:left-2 z-10"
                                              onClick={() =>
                                                   setIsShowing(
@@ -105,9 +105,9 @@ const Header: FC<Props> = (props) => {
                                                   viewBox="0 0 24 24"
                                                   fill="none"
                                                   stroke="currentColor"
-                                                  stroke-width="2"
-                                                  stroke-linecap="round"
-                                                  stroke-linejoin="round"
+                                                  strokeWidth="2"
+                                                  strokeLinecap="round"
+                                                  strokeLinejoin="round"
                                                   className="text-white">
                                                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                                   <polyline points="22,6 12,13 2,6"></polyline>
@@ -122,9 +122,9 @@ const Header: FC<Props> = (props) => {
                                                   viewBox="0 0 24 24"
                                                   fill="none"
                                                   stroke="currentColor"
-                                                  stroke-width="2"
-                                                  stroke-linecap="round"
-                                                  stroke-linejoin="round"
+                                                  strokeWidth="2"
+                                                  strokeLinecap="round"
+                                                  strokeLinejoin="round"
                                                   className="text-white">
                                                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                                   <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>

@@ -5,13 +5,14 @@ import { FaSpinner } from "react-icons/fa";
 import Card from "../../components/Card";
 import {
      groupLoadingSelector,
+     groupQuerySelector,
      groupsSelector,
 } from "../../selectors/groups.selectors";
 import { useAppSelector } from "../../store";
 
 interface Props {}
 const Dashboard: FC<Props> = () => {
-     // const query = useAppSelector(groupQuerySelector);
+     const query = useAppSelector(groupQuerySelector);
      const loading = useAppSelector(groupLoadingSelector);
      const groups = useAppSelector(groupsSelector);
 
@@ -49,6 +50,18 @@ const Dashboard: FC<Props> = () => {
                                    content={group.description}></Card>
                          </div>
                     ))}
+                    {!loading && groups.length === 0 && query !== "" && (
+                         <div
+                              className="p-4 rounded-xl bg-red-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+                              role="alert">
+                              <span className="flex rounded-full bg-red-500 uppercase px-3 py-2 text-xs font-bold mr-3">
+                                   OOPS !
+                              </span>
+                              <span className="font-semibold mr-2 text-left flex-auto">
+                                   Data Not Found...
+                              </span>
+                         </div>
+                    )}
                </div>
           </div>
      );

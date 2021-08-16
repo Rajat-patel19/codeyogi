@@ -23,15 +23,15 @@ const groupByIdSelector = createSelector(
      (groupState) => groupState.byId
 );
 
-export const groupQueryLoadingSelector = createSelector(
+export const groupLoadingSelector = createSelector(
      [groupStateSelector],
-     (groupState) => groupState.loadingQuery
+     (groupState) => groupState.loading
 );
 
-export const groupLoadingSelector = createSelector(
-     [groupQuerySelector, groupQueryLoadingSelector],
-     (query, loadingMap) => loadingMap[query]
-);
+// export const groupLoadingSelector = createSelector(
+//      [groupQuerySelector, groupQueryLoadingSelector],
+//      (query, loadingMap) => loadingMap[query]
+// );
 
 export const groupsSelector = createSelector(
      [groupQuerySelector, groupByIdSelector, groupQueryMapSelector],
